@@ -1,24 +1,53 @@
+:root {
+  --background-color: #f0f0f0;
+  --container-bg-color: white;
+  --text-color: #333;
+  --number-bg-color: #eee;
+  --button-bg-color: #4CAF50;
+  --button-hover-bg-color: #45a049;
+  --form-input-bg: white;
+  --form-input-border: #ccc;
+}
+
+body.dark-mode {
+  --background-color: #333;
+  --container-bg-color: #555;
+  --text-color: #f0f0f0;
+  --number-bg-color: #444;
+  --button-bg-color: #2196F3;
+  --button-hover-bg-color: #1976D2;
+  --form-input-bg: #444;
+  --form-input-border: #666;
+}
+
 body {
   font-family: sans-serif;
   display: flex;
+  flex-direction: column; /* Changed to column to stack containers */
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: var(--background-color);
   margin: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
   text-align: center;
-  background-color: white;
+  background-color: var(--container-bg-color);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  margin-bottom: 20px; /* Added margin for spacing between containers */
+  width: 80%; /* Added width for better layout */
+  max-width: 500px; /* Added max-width */
 }
 
-h1 {
+h1, .contact-form-container h2 { /* Added h2 for contact form */
   margin-bottom: 30px;
-  color: #333;
+  color: var(--text-color);
+  transition: color 0.3s;
 }
 
 .numbers-container {
@@ -31,20 +60,21 @@ h1 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #eee;
+  background-color: var(--number-bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   font-weight: bold;
   margin: 0 5px;
-  color: #333;
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-#generate-btn {
+#generate-btn, #theme-toggle-btn {
   padding: 15px 30px;
   font-size: 18px;
-  background-color: #4CAF50;
+  background-color: var(--button-bg-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -52,6 +82,55 @@ h1 {
   transition: background-color 0.3s;
 }
 
-#generate-btn:hover {
-  background-color: #45a049;
+#generate-btn:hover, #theme-toggle-btn:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+/* Contact Form Specific Styles */
+.contact-form-container {
+  padding: 20px;
+}
+
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form-container label {
+  text-align: left;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+.contact-form-container input[type="email"],
+.contact-form-container textarea {
+  padding: 10px;
+  border: 1px solid var(--form-input-border);
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: var(--form-input-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.contact-form-container input[type="email"]:focus,
+.contact-form-container textarea:focus {
+  border-color: var(--button-bg-color);
+  outline: none;
+}
+
+.contact-form-container button[type="submit"] {
+  background-color: var(--button-bg-color);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.contact-form-container button[type="submit"]:hover {
+  background-color: var(--button-hover-bg-color);
 }
